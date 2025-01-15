@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Wind World India</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       body {
+    background-image: url('img/sbg1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
+
+.container {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.9); /* White with some transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-label {
+    font-size: 15px; /* Improved readability */
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control, .form-select {
+    font-size: 14px; 
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.hidden {
+    display: none; /* Class to hide elements */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="adduser.jsp" method="post">
+        <div class="row mb-3">
+            <div class="mb-3">
+                <label for="user_name" class="form-label"><strong>User Name</strong></label>
+                <input type="text" class="form-control" id="user_name" name="userName" required>
+            </div>
+             
+              <div class="mb-3">
+                <label for="user_mail_id" class="form-label"><strong>Enter User Email ID</strong></label>
+                <input type="email" class="form-control" id="user_mail_id" name="usermailId" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="state" class="form-label"><strong>State</strong></label>
+                <select class="form-select" id="state" name="state" required>
+                    <option value="">Select State</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="GJ">Gujarat</option>
+                    <option value="RJ">Rajasthan</option>
+                    <option value="AP">Andhra pradesh</option>
+                    <option value="MP">Madhya pradesh</option>
+                    <option value="TN">Tamil Nadu</option>
+                    <option value="Daman">Daman</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="mb-3">
+                <label for="location" class="form-label"><strong>Location</strong></label>
+                <select class="form-select" id="location" name="location" required>
+                    <option value="">Select Location</option>
+                </select>
+            </div>
+            
+            <div class="row mb-3">
+    <div class="mb-3">
+        <label for="related_type" class="form-label"><strong>Related Type</strong></label>
+        <select class="form-select" id="related_type" name="reletedtype" required>
+            <option value="">Select Related Type</option>
+            <option value="Internal">Internal</option>
+            <option value="External">External</option>
+        </select>
+    </div>
+</div>
+            <div class="row mb-3">
+            <div class="mb-3">
+                <label for="complain_type" class="form-label"><strong>Complaint Type</strong></label>
+                <select class="form-select" id="complain_type" name="complaintype" required>
+                    <option value="">Select Complaint Type</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Software">Software</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Asset Type (Hardware) Fields -->
+        <div id="hardwareFields" class="row mb-3 hidden">
+            <div class="mb-3">
+                <label for="asset_type" class="form-label"><strong>Asset Type</strong></label>
+                <select class="form-select" id="asset_type" name="assetType">
+                    <option value="">Select Asset</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Desktop">Desktop</option>
+                    <option value="Printer">Printer</option>
+                      <option value="Ups">Ups</option>
+                    <option value="Link">Link</option>
+                    
+                    <option value="WiFi Device">WiFi Device</option>
+                    <option value="video conferencing">video conferencing</option>
+                    <option value="Scanner">Scanner</option>
+                    <option value="Servers">Servers</option>
+                    <option value="Forti EMS">Forti EMS</option>
+                    <option value="Forti Analyzer">Forti Analyzer</option>
+                    <option value="Forti Mail">Forti Mail</option>
+                    <option value="Fortigate Firewall">Fortigate Firewall</option>
+                    
+                </select>
+            </div>
+        </div>
+
+        <!-- Type of Link/Network/Switch Field -->
+        <div id="networkFields" class="row mb-3 hidden">
+            <div class="mb-3">
+                <label for="ipadd" class="form-label"><strong>Type Of Link/Network/Switch</strong></label>
+                <input type="text" class="form-control" id="ipAdd" name="ipAdd">
+            </div>
+        </div>
+
+        <!-- Hardware-specific Details -->
+        <div id="hardwareDetails" class="row mb-3 hidden">
+            <div class="mb-3">
+                <label for="make" class="form-label"><strong>Make</strong></label>
+                <input type="text" class="form-control" id="make" name="make">
+            </div>
+            <div class="mb-3">
+                <label for="model" class="form-label"><strong>Model</strong></label>
+                <input type="text" class="form-control" id="model" name="model">
+            </div>
+            <div class="mb-3">
+                <label for="system_serialnumber" class="form-label"><strong>System Serial Number</strong></label>
+                <input type="text" class="form-control" id="system_serialnumber" name="systemSerialNumber">
+            </div>
+        </div>
+
+        <!-- Application Type (Software) Field -->
+        <div id="softwareFields" class="row mb-3 hidden">
+            <div class="mb-3">
+                <label for="application_type" class="form-label"><strong>Application Type</strong></label>
+                <input type="text" class="form-control" id="application_type" name="applitype">
+            </div>
+        </div>
+
+            <div class="mb-3">
+                <label for="problem_description" class="form-label"><strong>Problem Description</strong></label>
+                <input type="text" class="form-control" id="problem_description" name="problemDescription" required>
+            </div>
+        </div>
+
+        <!-- Other fields -->
+        <div class="row mb-3">
+            <div class="mb-3">
+                <label for="complaint_logged_by" class="form-label"><strong>Complaint Logged By</strong></label>
+                <input type="text" class="form-control" id="complaint_logged_by" name="complaintLoggedBy" required>
+            </div>
+            <div class="mb-3">
+                <label for="informed_to_purchased_vendor_date" class="form-label"><strong>Informed to Vendor Date</strong></label>
+                <input type="date" class="form-control" id="informed_to_purchased_vendor_date" name="informedToPurchasedVendorDate" required>
+            </div>
+        </div>
+
+       <div class=" mb-3" id="vendorField">
+    <div class="mb-3">
+        <label for="vendor_name" class="form-label"><strong>Vendor Name</strong></label>
+        <select class="form-select" id="vendor_name" name="vendorName" >
+            <option value="">Select</option>
+            <option value="HP Support">HP Support</option>
+            <option value="DELL">DELL</option>
+            <option value="LENOVO">LENOVO</option>
+            <option value="TATA">TATA</option>
+            <option value="COMnet Solution">COMnet Solution</option>
+            <option value="impact-infotech">impact-infotech</option>
+            <option value="Local Vendor">Local Vendor</option>
+            <option value="Yash Computers">Yash Computer</option>
+            <option value="RB Computers">RB Computer</option>
+             <option value="Quest">Quest</option>
+             <option value="BSNL">BSNL</option>
+             <option value="Cispl">Cispl</option>
+        </select>
+    </div>
+  </div>
+           <!--  <div class="col-md-6">
+                <label for="case_log_date" class="form-label"><strong>Case Log Date</strong></label>
+                <input type="date" class="form-control" id="case_log_date" name="caseLogDate" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="case_number" class="form-label"><strong>Case Number</strong></label>
+                <input type="text" class="form-control" id="case_number" name="caseNumber" required>
+            </div> -->
+            <div class="mb-3">
+                <label for="status" class="form-label"><strong>Status</strong></label>
+                  <select class="form-select" id="status" name="status" required>
+                    <option value="OPEN">OPEN</option>
+               
+              </select>
+            </div>
+              </div>
+      
+
+        <!-- Hidden Fields -->
+        <input type="hidden" id="part_replacement" name="partReplacement" value="None">
+        <input type="hidden" id="case_resolved_date" name="caseResolvedDate" value="">
+        <input type="hidden" id="no_of_days_taken_to_resolve" name="noOfDaysTakenToResolve" value="0">
+        <input type="hidden" id="case_number" name="caseNumber" required>
+        <input type="hidden" id="case_log_date" name="caseLogDate" required>
+        <input type="hidden" id="remarks" name="remarks" value="">
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Complaint</button>
+        </div>
+    </form>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('state').addEventListener('change', function() {
+    var state = this.value;
+    var location = document.getElementById('location');
+    
+    
+    // Clear previous options
+    location.innerHTML = '<option value="">Select Location</option>';
+   
+
+    // Define state-location mapping
+    var locationsByState = {
+        'MH': ['Mumbai-Ho','Mumbai-DC', 'Nasik','Satara','Khanapur','Ahamadnagar','Talegaon','Karad','Chavaneshwar','Chalkewadi'],
+        'KA': ['CTA', 'Chitradurga', 'Hiryur', 'Gadag', 'Belgaum', 'Tadas'],
+        'GJ': ['Jamnagar'],
+        'RJ': ['Jaisalmer', 'Salkha','Bhiksar','Kodiyasr','New Achala','Asloi','Gorera ph-03','Gorera ph-01','Sikar','Jajiya','Barna','Kothri','Dujasar',
+        	'SKB','Kita','Ugawa','Jodha Akal','Bhu','Tinwari','Sirwa','Unda','Devikot','Bhilani','Rama','Korwa','Soda bandan','Rajgarh SS','Bhu SS',
+        	'Temderai SS','Salodi SS','Koda','Moda','Store Jaisamer'],
+        'AP': ['Narmada', 'Anantapur'],
+        'MP': ['Dewas office','Ratedi Ext','Ratedi Old','Nagda','Barotha Hills','Mahuriya','Mandsaur','Ratedi SS'],
+        'TN': [''],
+        'Daman': ['Daman','Daman-WTA']
+    };
+
+    // Define state-asset type mapping
+  
+
+    // Populate locations based on the selected state
+    if (state && locationsByState[state]) {
+        locationsByState[state].forEach(function(loc) {
+            var option = document.createElement('option');
+            option.value = loc;
+            option.text = loc;
+            location.appendChild(option);
+        });
+    }
+
+    // Populate asset types based on the selected state
+   
+});
+
+
+document.getElementById('complain_type').addEventListener('change', function () {
+    var complaintType = this.value;
+    var hardwareFields = document.getElementById('hardwareFields');
+    var softwareFields = document.getElementById('softwareFields');
+    var hardwareDetails = document.getElementById('hardwareDetails');
+    var networkFields = document.getElementById('networkFields');
+
+    if (complaintType === 'Hardware') {
+        hardwareFields.classList.remove('hidden');
+        softwareFields.classList.add('hidden');
+        hardwareDetails.classList.add('hidden');
+        networkFields.classList.add('hidden');
+    } else if (complaintType === 'Software') {
+        softwareFields.classList.remove('hidden');
+        hardwareFields.classList.add('hidden');
+        hardwareDetails.classList.add('hidden');
+        networkFields.classList.add('hidden');
+    } else {
+        // Hide all sections if no selection
+        hardwareFields.classList.add('hidden');
+        softwareFields.classList.add('hidden');
+        hardwareDetails.classList.add('hidden');
+        networkFields.classList.add('hidden');
+    }
+});
+
+// Toggle fields based on Asset Type
+document.getElementById('asset_type').addEventListener('change', function () {
+    var assetType = this.value;
+    var hardwareDetails = document.getElementById('hardwareDetails');
+    var networkFields = document.getElementById('networkFields');
+
+    var typesRequiringNetworkField = ['Link', 'WiFi Device', 'Network Equipment','Fortigate Firewall','Forti Mail'
+    	,'Forti Analyzer','Forti EMS','Servers','video conferencing',];
+
+    if (typesRequiringNetworkField.includes(assetType)) {
+        hardwareDetails.classList.add('hidden');
+        networkFields.classList.remove('hidden');
+    } else {
+        hardwareDetails.classList.remove('hidden');
+        networkFields.classList.add('hidden');
+    }
+});
+document.getElementById('related_type').addEventListener('change', function () {
+    var relatedType = this.value;
+    var vendorField = document.getElementById('vendorField');
+
+    // Hide the Vendor Name field if 'Internal' is selected
+    if (relatedType === 'Internal') {
+        vendorField.classList.add('hidden');
+    } else {
+        vendorField.classList.remove('hidden');
+    }
+});
+</script>
+
+</body>
+</html>

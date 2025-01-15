@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
+
+<!-- Bootstrap CSS -->
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+<!-- Custom CSS -->
+<style>
+    .custom-pills .nav-link {
+        background-color: #64695c; 
+        color: white; 
+    }
+    .custom-pills .nav-link.active {
+        background-color: #4b5046; 
+        color: white; 
+    }
+    .custom-pills .nav-link:hover {
+        background-color: #50564b; 
+        color: white;
+    }
+    .navbar-brand img {
+        height: 70px; 
+        width: 250px;
+    }
+    /* Add transparency to icons */
+    .custom-pills .nav-link i {
+        opacity: 0.6; /* Adjust transparency level (0 = fully transparent, 1 = fully opaque) */
+        transition: opacity 0.3s ease; /* Smooth hover effect */
+    }
+    .custom-pills .nav-link:hover i {
+        opacity: 1; /* Make icons fully visible on hover */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-between py-2 mb-3 border-bottom align-items-center">
+        <a href="#" class="navbar-brand">
+            <img src="img/logo.png" alt="Logo">
+        </a>
+        <ul class="nav nav-pills custom-pills">
+           <li class="nav-item">
+                <a href="graphuser.jsp" class="nav-link active m-1"><i class="fa-solid fa-house"></i></a>
+            </li>
+           <!--  <li class="nav-item">
+                <a href="viewusers.jsp" class="nav-link m-1"><i class="fa-solid fa-eye"></i></a>
+            </li> -->
+            <li class="nav-item">
+                <a href="profile.jsp" class="nav-link m-1"><i class="fa-solid fa-address-card"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="changepassword.jsp" class="nav-link m-1"><i class="fa-solid fa-key"></i></a>
+            </li>
+            <li class="nav-item">
+                <a id="logoutButton" class="nav-link m-1" aria-current="page" href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </li>
+        </ul> 
+    </header>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function () {
+                alert('You have successfully logged out.');
+                window.location.href = 'login.jsp'; 
+            });
+        }
+    });
+</script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
